@@ -1,6 +1,6 @@
 {
   "name": "eastern-cli",
-  "version": "0.0.0-pre",
+  "version": "0.0.0",
   "description": "",
   "bin": "eastern",
   "main": "src",
