@@ -2,7 +2,9 @@
   "name": "eastern-cli",
   "version": "0.0.0",
   "description": "",
-  "bin": "eastern",
+  "bin": {
+    "eastern": "eastern"
+  },
   "main": "src",
   "dependencies": {
     "bluebird": "^3.5.1",
