@@ -1,9 +1,9 @@
 export const code = 1;
 export const stdout = `
   1
+  1-before
     -  1-1
     -  1-2
-  1-before
     -  1-notonly-1
   1-beforeEach
     ✓  1-only-1 (ELAPSED ms)
@@ -13,9 +13,9 @@ export const stdout = `
   1-afterEach
     2
     3
+      3-before
       -  3-1
       -  3-2
-      3-before
       -  3-notonly-1
       3-beforeEach
       ✓  3-only-1 (ELAPSED ms)
