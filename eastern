@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+const main = require("path").resolve(__dirname, "src");
+require("child_process")
+  .spawn(
+    "node",
+    ["--experimental-modules", "--no-warnings", main].concat(
+      process.argv.slice(2)
+    ),
+    {
+      env: process.env,
+      stdio: "inherit"
+    }
+  )
+  .on("exit", code => {
+    process.exit(code);
+  });

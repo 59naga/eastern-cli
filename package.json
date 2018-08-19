@@ -1,0 +1,39 @@
+{
+  "name": "eastern-cli",
+  "version": "0.0.0-pre",
+  "description": "",
+  "bin": "eastern",
+  "main": "src",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "chalk": "^2.4.1",
+    "chopsticks": "^0.6.0",
+    "globby": "^8.0.1"
+  },
+  "peerDependencies": {
+    "eastern": "^1.0.1"
+  },
+  "scripts": {
+    "start": "abby format, test --watch \"{./,src,test}/**/*.mjs\"",
+    "test": "node --experimental-modules --no-warnings ./test/index.mjs",
+    "format": "prettier \"{./,src,test}/**/*.mjs\" --write --loglevel silent",
+    "postversion": "git push --follow-tags && conventional-github-releaser -p atom"
+  },
+  "devDependencies": {
+    "abigail": "^1.9.5",
+    "assert-diff": "^2.0.3",
+    "delay": "^3.0.0",
+    "eastern": "^1.0.1",
+    "prettier": "^1.14.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/59naga/eastern-cli.git"
+  },
+  "author": "59naga <i59naga@icloud.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/59naga/eastern-cli/issues"
+  },
+  "homepage": "https://github.com/59naga/eastern-cli#readme"
+}
