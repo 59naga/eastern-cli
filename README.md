@@ -23,7 +23,7 @@ npm install eastern eastern-cli --save-dev
 yarn add -D eastern eastern-cli
 ```
 
-The `eastern` command defines `global.spec`, `global.it`, `global.describe`.
+The `eastern` command defines `global.it`, `global.describe`.
 And find and run `test.mjs` / `test/**/*.mjs`.
 
 ```bash
