@@ -5,8 +5,7 @@ import chopsticks from "chopsticks";
 import globby from "globby";
 import { resolve } from "url";
 
-import Reporter from "eastern/src/reporter";
-import Describe from "eastern/src/describe";
+import root from "eastern/src/register";
 import usage from "./usage";
 
 process.on("unhandledRejection", function(error, promise) {
@@ -32,26 +31,15 @@ process.on("unhandledRejection", function(error, promise) {
   const globs = args._.length ? args._ : ["test.mjs", "test/**/*.mjs"];
   const paths = await globby(globs);
 
-  const reporter = new Reporter();
-  const root = new Describe(null, { reporter, immediate: false });
-
-  global.spec = root.block;
-  global.it = root.block;
-  global.describe = root.block.describe;
-
   await Promise.each(paths, path => {
     return import(new URL(path, new URL(`file://${process.cwd()}/`)));
   });
 
-  console.log("");
-  root.evaluateBlock();
+  const { default: Reporter } = await import("eastern/src/reporters/spec");
 
-  await root.finish;
-  if (!reporter.isComplete(root.count())) {
-    reporter.outputResult();
-    reporter.outputFailures();
+  const reporter = new Reporter(process);
+  await root.evaluate(reporter);
+  if (!reporter.isComplete()) {
     process.exit(1);
   }
-  reporter.outputResult();
-  console.log("");
 })();

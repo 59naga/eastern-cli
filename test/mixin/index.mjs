@@ -1,16 +1,17 @@
 import delay from "delay";
 
-describe("1", ({ before, beforeEach, afterEach, after, it, describe }) => {
-  before(() => {
+setOptions({ concurrency: 1 });
+describe("1", (it, describe) => {
+  it.before(() => {
     console.log("  1-before");
   });
-  beforeEach(() => {
+  it.beforeEach(() => {
     console.log("  1-beforeEach");
   });
-  afterEach(() => {
+  it.afterEach(() => {
     console.log("  1-afterEach");
   });
-  after(() => {
+  it.after(() => {
     console.log("  1-after");
   });
 
@@ -25,17 +26,17 @@ describe("1", ({ before, beforeEach, afterEach, after, it, describe }) => {
   });
 
   describe("2");
-  describe("3", ({ before, beforeEach, afterEach, after, it, describe }) => {
-    before(() => {
+  describe("3", (it, describe) => {
+    it.before(() => {
       console.log("      3-before");
     });
-    beforeEach(() => {
+    it.beforeEach(() => {
       console.log("      3-beforeEach");
     });
-    afterEach(() => {
+    it.afterEach(() => {
       console.log("      3-afterEach");
     });
-    after(() => {
+    it.after(() => {
       console.log("      3-after");
     });
 
